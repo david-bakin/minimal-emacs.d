@@ -28,6 +28,7 @@
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)
 (require 'bakin-stripspace)
+(require 'bakin-themes)
 (require 'bakin-treemacs)
 
 

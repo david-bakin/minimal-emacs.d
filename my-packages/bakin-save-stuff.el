@@ -10,6 +10,7 @@
 ;; savehist - preserves minibuffer history between sessions
 ;; saveplace - remembers the last location within a file when reopening it
 ;; auto-save-mode, auto-save-visited-mode enabled
+;; persist-text-scale - ensure text size in each buffer is consistent after restart
 ;;
 ;; savehist is an Emacs feature that preserves the minibuffer history between
 ;; sessions. It saves the history of inputs in the minibuffer, such as commands,
@@ -32,6 +33,9 @@
 ;; with a file, while auto-save-visited-mode only saves file-visiting buffers
 ;; after a period of idle time, directly saving to the file itself without
 ;; creating backup files.
+;; 
+;; Package persist-text-scale to ensure text size in each buffer remains consistent
+;; even after restarting Emacs.  See https://github.com/jamescherti/persist-text-scale.el
 
 
 ;;; Code:
@@ -60,6 +64,14 @@
 (setq auto-save-visited-interval 10)   ; Save after 10 seconds of inactivity
 (auto-save-visited-mode 1)
 
+(use-package persist-text-scale
+  :commands (persist-text-scale-mode
+             persist-text-scale-restore)
+
+  :hook (after-init . persist-text-scale-mode)
+
+  :custom
+  (text-scale-mode-step 1.07))
 
 (provide 'bakin-save-stuff)
 

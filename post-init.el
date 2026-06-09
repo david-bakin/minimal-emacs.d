@@ -12,6 +12,7 @@
 ;; 7) figure out visual line mode and use it or not - see also visual-line-fringe-indicators (https://vlevit.org/en/blog/tech/visual-line-wrap)
 ;;    and whitespace-mode and auto-fill-mode
 ;; 8) why don't the key bindings for eval-expression work? - this was win32 mode key registration stuff
+;; 9) bind `ibuffer` to a key to use it like bufed (^x^b in epsilon)
 
 
 ;;; package path manipulation - setup for my packages (so that they can be byte-compiled)
@@ -25,25 +26,7 @@
 (require 'bakin-init-my-packages)
 
 
-;;; (color) themes
-
-(let ((inhibit-redisplay t))
-  ;; Disable all active themes
-  (mapc #'disable-theme custom-enabled-themes)
-  ;; Load the built-in theme
-  (load-theme 'modus-operandi-deuteranopia t))
-
-;;; Give Emacs tab-bar the same theme as Emacs itself
-
-(use-package vim-tab-bar
-  :commands vim-tab-bar-mode
-  :hook (after-init . vim-tab-bar-mode))
-
-;; (bakin) turn on tab-bar mode
-(tab-bar-mode)
-(setopt tab-bar-show 1)  ;; only show tab bar when multiple tabs are open
-
-
+;; ---------------------------------------------------------------------------
 
 
 ;;; package diff-hl to highlight git uncommitted changes in the window margin
@@ -57,8 +40,6 @@
   (setq diff-hl-show-staged-changes nil)  ; Realtime feedback
   (setq diff-hl-update-async t)  ; Do not block Emacs
   (setq diff-hl-global-modes '(not pdf-view-mode image-mode)))
-
-
 
 
 ;;; package buffer-terminator _automatically and safely kills buffers_
@@ -100,7 +81,7 @@
   :custom
   (helpful-max-buffers 7))
 
-;;; package bufferfile.el has helperfunction to delete, rename, or copy buffer files
+;;; package bufferfile.el has helper functions to delete, rename, or copy buffer files
 
 (use-package bufferfile
   :commands (bufferfile-copy
@@ -159,18 +140,6 @@
 ;; Set the default font to DejaVu Sans Mono with specific size and weight
 (set-face-attribute 'default nil
                     :height 130 :weight 'normal :family "PragmataPro Mono")
-
-
-;;; package persist-text-scale to ensure text size in each buffer remains consistent even after restarting Emacs
-
-(use-package persist-text-scale
-  :commands (persist-text-scale-mode
-             persist-text-scale-restore)
-
-  :hook (after-init . persist-text-scale-mode)
-
-  :custom
-  (text-scale-mode-step 1.07))
 
 
 ;;; package buffer-guardian for autosave when switching buffers, frames, etc.

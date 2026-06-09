@@ -10,7 +10,19 @@
 ;; 5) there are various autosave mechanisms - do they conflict?
 ;; 6) consider elpaca package manager
 ;; 7) figure out visual line mode and use it or not
-;; 8) why don't the key bindings for eval-expression work?
+;; 8) why don't the key bindings for eval-expression work? - this was win32 mode key registration stuff
+
+
+;;; package path manipulation - setup for my packages
+;; (so that they can be byte-compiled)
+(let ((full-path (expand-file-name "my-packages" minimal-emacs-user-directory)))
+  (if (file-directory-p full-path)
+    (unless (member full-path load-path)
+      (push full-path load-path))
+    (message "Directory does not exist, skipping load: %s" full-path)))
+
+(require 'bakin-register-w32-hot-key)
+
 
 
 ;;; package compile-angel to ensure all elisp code is byte-compiled
@@ -919,14 +931,6 @@
 
 ;; always write a final newline
 (setq require-final-newline t)
-
-
-;;; Register certain M- (meta key) combinations in order to bypass Window's own processing of them
-;; see https://www.gnu.org/software/emacs/manual/html_node/emacs/Windows-Keyboard.html
-;; also see http://xahlee.info/emacs/emacs/emacs_windows_meta_key.html
-(setq w32-alt-is-meta t)
-(w32-register-hot-key [M-:]) ;; eval-expression
-
 
 ;; Local Variables:
 ;; indent-tabs-mode: nil

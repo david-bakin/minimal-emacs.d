@@ -10,6 +10,7 @@
 ;; 5) there are various autosave mechanisms - do they conflict?
 ;; 6) consider elpaca package manager
 ;; 7) figure out visual line mode and use it or not
+;; 8) why don't the key bindings for eval-expression work?
 
 
 ;;; package compile-angel to ensure all elisp code is byte-compiled
@@ -227,7 +228,7 @@
              gfm-view-mode
              markdown-mode
              markdown-view-mode)
-  :init 
+  :init
   (setq markdown-command '("C:\\Scoop\\Local\\apps\\pandoc\\current\\pandoc" "--from=markdown" "--to=html5"))    ;; (bakin)
   (setq markdown-open-command '("C:\\Users\\david\\AppData\\Local\\Programs\\MDLook\\MDLook.exe"))               ;; (bakin)
   (setq markdown-enable-math t)                                                                                  ;; (bakin)
@@ -771,6 +772,8 @@
   (defun my-server-start ()
     "Start the Emacs server if no server process is currently active."
     (unless (server-running-p)
+      (setq server-use-tcp t)
+      (setq server-name "minimal")
       (server-start))))
 
 
@@ -786,14 +789,14 @@
 ;;          ("/info/exclude\\'" . gitignore-mode)
 ;;          ("/git/ignore\\'" . gitignore-mode)
 ;;          ("/.gitignore_global\\'" . gitignore-mode)  ; jc-dotfiles
-;; 
+;;
 ;;          ("/\\.gitconfig\\'" . gitconfig-mode)
 ;;          ("/\\.git/config\\'" . gitconfig-mode)
 ;;          ("/modules/.*/config\\'" . gitconfig-mode)
 ;;          ("/git/config\\'" . gitconfig-mode)
 ;;          ("/\\.gitmodules\\'" . gitconfig-mode)
 ;;          ("/etc/gitconfig\\'" . gitconfig-mode)
-;; 
+;;
 ;;          ("/\\.gitattributes\\'" . gitattributes-mode)
 ;;          ("/info/attributes\\'" . gitattributes-mode)
 ;;          ("/git/attributes\\'" . gitattributes-mode)))
@@ -916,6 +919,13 @@
 
 ;; always write a final newline
 (setq require-final-newline t)
+
+
+;;; Register certain M- (meta key) combinations in order to bypass Window's own processing of them
+;; see https://www.gnu.org/software/emacs/manual/html_node/emacs/Windows-Keyboard.html
+;; also see http://xahlee.info/emacs/emacs/emacs_windows_meta_key.html
+(setq w32-alt-is-meta t)
+(w32-register-hot-key [M-:]) ;; eval-expression
 
 
 ;; Local Variables:

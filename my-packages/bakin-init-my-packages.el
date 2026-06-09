@@ -8,7 +8,7 @@
 ;;; Commentary:
 
 ;; Load all of my packages.
-;; TODO: Consider auto-loading everything in this directory
+;; TODO: Consider auto-loading everything in this directory (without having to list packages explicitly)
 
 ;;; Code:
 
@@ -25,6 +25,8 @@
 (require 'bakin-recentf)
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)
+(require 'bakin-stripspace)
+
 
 ;; Just for the record, emit a message with all my loaded packages
 (let* ((my-packages (sort (seq-filter #'(lambda (elt) (string-prefix-p "bakin-" (symbol-name elt))) features)))

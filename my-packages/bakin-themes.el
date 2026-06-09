@@ -1,4 +1,4 @@
-;;; bakin-themes.el --- Set up themes (color schemes) -*- lexical-binding: t; -*-
+;;; bakin-themes.el --- Set up themes (color schemes) and default font -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 David Bakin
 
@@ -12,7 +12,15 @@
 ;; vim-tab-bar to give the tab bar the same theme as Emacs is using (and why isn't _that_
 ;; functionality built-in?)
 ;;
+;; Also choose PragmataPro Mono as default font.
+;;
 ;; See https://github.com/jamescherti/vim-tab-bar.el for package vim-tab-bar.
+;;
+;; (It would be sweet to support ligatures - https://github.com/mickeynp/ligature.el - but
+;; the standard version of Gnu Emacs is apparently not built with Cairo on Windows.)  (BUT
+;; wait a second!  The installation directory contains `libcairo-2.dll` ... so why does
+;; `C-h v cairo-version-string` not work?) (Anyway, should at least test ligatures 
+;; package ...)
 
 ;;; Code:
 
@@ -23,7 +31,11 @@
   ;; Load the built-in theme
   (load-theme 'modus-operandi-deuteranopia t))
 
-;;; Give Emacs tab-bar the same theme as Emacs itself
+;; Set the default font to DejaVu Sans Mono with specific size and weight
+(set-face-attribute 'default nil
+                    :height 130 :weight 'normal :family "PragmataPro Mono")
+
+;; Give Emacs tab-bar the same theme as Emacs itself
 
 (use-package vim-tab-bar
   :commands vim-tab-bar-mode

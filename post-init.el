@@ -135,12 +135,6 @@
              elisp-refs-special
              elisp-refs-symbol))
 
-;;; Set default font (face)
-
-;; Set the default font to DejaVu Sans Mono with specific size and weight
-(set-face-attribute 'default nil
-                    :height 130 :weight 'normal :family "PragmataPro Mono")
-
 
 ;;; package buffer-guardian for autosave when switching buffers, frames, etc.
 

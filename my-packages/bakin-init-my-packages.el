@@ -27,6 +27,7 @@
 (require 'bakin-recentf)
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)
+(require 'bakin-specific-file-types)
 (require 'bakin-stripspace)
 (require 'bakin-themes)
 (require 'bakin-treemacs)

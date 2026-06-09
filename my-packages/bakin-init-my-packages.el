@@ -20,6 +20,7 @@
 (require 'bakin-ordinary-file-editing)
 (require 'bakin-recentf)
 (require 'bakin-register-w32-hot-key)
+(require 'bakin-save-stuff)
 
 ;; Just for the record, emit a message with all my loaded packages
 (let ((my-packages (sort (seq-filter '(lambda (elt) (string-prefix-p "bakin-" (symbol-name elt))) features))))

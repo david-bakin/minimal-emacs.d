@@ -28,6 +28,7 @@
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)
 (require 'bakin-stripspace)
+(require 'bakin-treemacs)
 
 
 ;; Just for the record, emit a message with all my loaded packages

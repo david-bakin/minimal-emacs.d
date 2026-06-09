@@ -58,69 +58,8 @@
   (setq diff-hl-update-async t)  ; Do not block Emacs
   (setq diff-hl-global-modes '(not pdf-view-mode image-mode)))
 
-;;; package org-mode for organizing notes, etc. etc. etc. with simple markup syntax, with package org-appear
-
-;; Org mode is a major mode designed for organizing notes, planning, task
-;; management, and authoring documents using plain text with a simple and
-;; expressive markup syntax. It supports hierarchical outlines, TODO lists,
-;; scheduling, deadlines, time tracking, and exporting to multiple formats
-;; including HTML, LaTeX, PDF, and Markdown.
-(use-package org
-  :commands (org-mode org-version)
-  :mode
-  ("\\.org\\'" . org-mode)
-  :custom
-  (org-hide-leading-stars t)
-  (org-startup-indented t)
-  (org-adapt-indentation nil)
-  (org-edit-src-content-indentation 0)
-  ;; (org-fontify-done-headline t)
-  ;; (org-fontify-todo-headline t)
-  ;; (org-fontify-whole-heading-line t)
-  ;; (org-fontify-quote-and-verse-blocks t)
-  (org-startup-truncated t))
-
-(use-package org-appear
-  :commands org-appear-mode
-  :hook (org-mode . org-appear-mode))
 
 
-;;; package auto-package-update will automate updating installed packages (weekly, but configurable)
-
-;; This automates the process of updating installed packages
-(use-package auto-package-update
-  :custom
-  ;; Set the number of days between automatic updates.
-  ;; Here, packages will only be updated if at least 7 days have passed
-  ;; since the last successful update.
-  (auto-package-update-interval 7)
-
-  ;; Suppress display of the *auto-package-update results* buffer after updates.
-  ;; This keeps the user interface clean and avoids unnecessary interruptions.
-  (auto-package-update-hide-results t)
-
-  ;; Automatically delete old package versions after updates to reduce disk
-  ;; usage and keep the package directory clean. This prevents the accumulation
-  ;; of outdated files in Emacs's package directory, which consume
-  ;; unnecessary disk space over time.
-  (auto-package-update-delete-old-versions t)
-
-  ;; Uncomment the following line to enable a confirmation prompt
-  ;; before applying updates. This can be useful if you want manual control.
-  (auto-package-update-prompt-before-update t)
-
-  :config
-  ;; Run package updates automatically at startup, but only if the configured
-  ;; interval has elapsed.
-  (auto-package-update-maybe)
-
-  ;; Schedule a background update attempt daily at 10:00 AM.
-  ;; This uses Emacs' internal timer system. If Emacs is running at that time,
-  ;; the update will be triggered. Otherwise, the update is skipped for that
-  ;; day. Note that this scheduled update is independent of
-  ;; `auto-package-update-maybe` and can be used as a complementary or
-  ;; alternative mechanism.
-  (auto-package-update-at-time "10:00"))
 
 ;;; package buffer-terminator _automatically and safely kills buffers_
 

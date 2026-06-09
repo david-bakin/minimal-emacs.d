@@ -16,12 +16,14 @@
 ;; Should be first to ensure everything else is byte-compiled
 (require 'bakin-compile-angel)
 
+(require 'bakin-auto-package-update)
 (require 'bakin-autorevert)
 (require 'bakin-dumb-jump)
 (require 'bakin-easysession)
 (require 'bakin-folding)
 (require 'bakin-markdown-mode)
 (require 'bakin-ordinary-file-editing)
+(require 'bakin-org-mode)
 (require 'bakin-recentf)
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)

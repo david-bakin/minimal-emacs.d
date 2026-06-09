@@ -17,6 +17,7 @@
 (require 'bakin-compile-angel)
 
 (require 'bakin-autorevert)
+(require 'bakin-dumb-jump)
 (require 'bakin-easysession)
 (require 'bakin-folding)
 (require 'bakin-markdown-mode)

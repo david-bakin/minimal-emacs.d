@@ -43,35 +43,6 @@
 (tab-bar-mode)
 (setopt tab-bar-show 1)  ;; only show tab bar when multiple tabs are open
 
-;;; package dumpjump to get _lightweight_ context-aware "go-to-definition"
-
-(use-package dumb-jump
-  :commands dumb-jump-xref-activate
-  :init
-  ;; Register 'dumb-jump' as an xref backend so it integrates with
-  ;; 'xref-find-definitions'. A priority of 90 ensures it is used only when no
-  ;; more specific backend is available.
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate 90)
-
-  (setq dumb-jump-aggressive nil)
-  ;; (setq dumb-jump-quiet t)
-
-  ;; Number of seconds a rg/grep/find command can take before being warned to
-  ;; use ag and config.
-  (setq dumb-jump-max-find-time 3)
-
-  ;; Use `completing-read' so that selection of jump targets integrates with the
-  ;; active completion framework (e.g., Vertico, Ivy, Helm, Icomplete),
-  ;; providing a consistent minibuffer-based interface whenever multiple
-  ;; definitions are found.
-  (setq dumb-jump-selector 'completing-read)
-
-  ;; If ripgrep is available, force `dumb-jump' to use it because it is
-  ;; significantly faster and more accurate than the default searchers (grep,
-  ;; ag, etc.).
-  (when (executable-find "rg")
-    (setq dumb-jump-force-searcher 'rg)
-    (setq dumb-jump-prefer-searcher 'rg)))
 
 ;;; package stripspace to automatically delete trailing whitespace
 

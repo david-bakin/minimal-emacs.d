@@ -9,12 +9,13 @@
 ;; 4) consider dired-omit-files esp. if there's a way to toggle the hidden files on/off
 ;; 5) there are various autosave mechanisms - do they conflict?
 ;; 6) consider elpaca package manager
-;; 7) figure out visual line mode and use it or not
+;; 7) figure out visual line mode and use it or not - see also visual-line-fringe-indicators (https://vlevit.org/en/blog/tech/visual-line-wrap)
+;;    and whitespace-mode and auto-fill-mode
 ;; 8) why don't the key bindings for eval-expression work? - this was win32 mode key registration stuff
 
 
-;;; package path manipulation - setup for my packages
-;; (so that they can be byte-compiled)
+;;; package path manipulation - setup for my packages (so that they can be byte-compiled)
+
 (let ((full-path (expand-file-name "my-packages" minimal-emacs-user-directory)))
   (if (file-directory-p full-path)
     (unless (member full-path load-path)
@@ -41,54 +42,6 @@
 ;; (bakin) turn on tab-bar mode
 (tab-bar-mode)
 (setopt tab-bar-show 1)  ;; only show tab bar when multiple tabs are open
-
-;;; package easysession - session manager that persists lots of things including windows/frames
-
-;; The easysession Emacs package is a session manager for Emacs that can persist
-;; and restore file editing buffers, indirect buffers/clones, Dired buffers,
-;; windows/splits, the built-in tab-bar (including tabs, their buffers, and
-;; windows), and Emacs frames. It offers a convenient and effortless way to
-;; manage Emacs editing sessions and utilizes built-in Emacs functions to
-;; persist and restore frames.
-(use-package easysession
-  :commands (easysession-switch-to
-             easysession-save-as
-             easysession-save-mode
-             easysession-load-including-geometry)
-
-  :custom
-  (easysession-mode-line-misc-info t)  ; Display the session in the modeline
-  (easysession-save-interval (* 3 60))  ; Save every 3 minutes
-
-  :init
-  ;; Key mappings
-  (global-set-key (kbd "C-c ss") #'easysession-save)
-  (global-set-key (kbd "C-c sl") #'easysession-switch-to)
-  (global-set-key (kbd "C-c sL") #'easysession-switch-to-and-restore-geometry)
-  (global-set-key (kbd "C-c sr") #'easysession-rename)
-  (global-set-key (kbd "C-c sR") #'easysession-reset)
-  (global-set-key (kbd "C-c sd") #'easysession-delete)
-
-  (if (fboundp 'easysession-setup)
-      ;; The `easysession-setup' function adds hooks:
-      ;; - To enable automatic session loading during `emacs-startup-hook', or
-      ;;   `server-after-make-frame-hook' when running in daemon mode.
-      ;; - To automatically save the session at regular intervals, and when
-      ;;   Emacs exits.
-      (easysession-setup)
-    ;; Legacy
-    ;; The depth 102 and 103 have been added to to `add-hook' to ensure that the
-    ;; session is loaded after all other packages. (Using 103/102 is
-    ;; particularly useful for those using minimal-emacs.d, where some
-    ;; optimizations restore `file-name-handler-alist` at depth 101 during
-    ;; `emacs-startup-hook`.)
-    (add-hook 'emacs-startup-hook #'easysession-load-including-geometry 102)
-    (add-hook 'emacs-startup-hook #'easysession-save-mode 103)))
-
-;; from https://github.com/jamescherti/easysession.el#extension-easysession-magit-persist-and-restore-magit-buffers:
-(with-eval-after-load 'easysession
-  (require 'easysession-magit)
-  (easysession-magit-mode 1))
 
 ;;; package markdown-mode and markdown-toc - for editing markdown **N.B.: need to test integration of pandoc and mdlook**
 

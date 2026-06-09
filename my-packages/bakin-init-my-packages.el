@@ -17,14 +17,16 @@
 (require 'bakin-compile-angel)
 
 (require 'bakin-autorevert)
+(require 'bakin-easysession)
 (require 'bakin-ordinary-file-editing)
 (require 'bakin-recentf)
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)
 
 ;; Just for the record, emit a message with all my loaded packages
-(let ((my-packages (sort (seq-filter '(lambda (elt) (string-prefix-p "bakin-" (symbol-name elt))) features))))
-  (message "My packages loaded: %s" my-packages))
+(let* ((my-packages (sort (seq-filter #'(lambda (elt) (string-prefix-p "bakin-" (symbol-name elt))) features)))
+      (wrapped (string-fill (string-trim (prin1-to-string my-packages) "[(]" "[)]") 70)))
+  (message "⤇ ⤇ My packages loaded:\n%s" wrapped))
 
 
 (provide 'bakin-init-my-packages)

@@ -135,32 +135,6 @@
              elisp-refs-special
              elisp-refs-symbol))
 
-
-;;; package buffer-guardian for autosave when switching buffers, frames, etc.
-
-(use-package buffer-guardian
-  :custom
-  ;; When non-nil, include remote files in the auto-save process
-  (buffer-guardian-inhibit-saving-remote-files t)
-
-  ;; When non-nil, buffers visiting nonexistent files are not saved
-  (buffer-guardian-inhibit-saving-nonexistent-files nil)
-
-  ;; Save the buffer even if the window change results in the same buffer
-  (buffer-guardian-save-on-same-buffer-window-change t)
-
-  ;; Non-nil to enable verbose mode to log when a buffer is automatically saved
-  (buffer-guardian-verbose nil)
-
-  ;; Save all buffers after N seconds of user idle time. (Disabled by default)
-  ;; (buffer-guardian-save-all-buffers-idle 30)
-
-  ;; Save all buffers every N seconds. (Disabled by default)
-  ;; (setq buffer-guardian-save-all-buffers-interval (* 60 30))
-
-  :hook
-  (after-init . buffer-guardian-mode))
-
 ;;; package server use emacs as a server for emacsclient
 
 ;; The Emacs server allows external programs such as `emacsclient' to connect to

@@ -11,6 +11,7 @@
 ;; saveplace - remembers the last location within a file when reopening it
 ;; auto-save-mode, auto-save-visited-mode enabled
 ;; persist-text-scale - ensure text size in each buffer is consistent after restart
+;; buffer-guardian - automatically saves buffers when they lose focus, emacs is idle, etc.
 ;;
 ;; savehist is an Emacs feature that preserves the minibuffer history between
 ;; sessions. It saves the history of inputs in the minibuffer, such as commands,
@@ -36,6 +37,10 @@
 ;; 
 ;; Package persist-text-scale to ensure text size in each buffer remains consistent
 ;; even after restarting Emacs.  See https://github.com/jamescherti/persist-text-scale.el
+;;
+;; Package buffer-guardian - "Automatically save Emacs buffers without manual
+;; intervention (when buffers lose focus, regularly, or after emacs is idle)."
+;; See https://github.com/jamescherti/buffer-guardian.el
 
 
 ;;; Code:
@@ -72,6 +77,30 @@
 
   :custom
   (text-scale-mode-step 1.07))
+
+(use-package buffer-guardian
+  :custom
+  ;; When non-nil, include remote files in the auto-save process
+  (buffer-guardian-inhibit-saving-remote-files t)
+
+  ;; When non-nil, buffers visiting nonexistent files are not saved
+  (buffer-guardian-inhibit-saving-nonexistent-files nil)
+
+  ;; Save the buffer even if the window change results in the same buffer
+  (buffer-guardian-save-on-same-buffer-window-change t)
+
+  ;; Non-nil to enable verbose mode to log when a buffer is automatically saved
+  (buffer-guardian-verbose nil)
+
+  ;; Save all buffers after N seconds of user idle time. (Disabled by default)
+  (buffer-guardian-save-all-buffers-idle 60)
+
+  ;; Save all buffers every N seconds. (Disabled by default)
+  ;; (setq buffer-guardian-save-all-buffers-interval (* 60 30))
+
+  :hook
+  (after-init . buffer-guardian-mode))
+
 
 (provide 'bakin-save-stuff)
 

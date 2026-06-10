@@ -38,17 +38,20 @@
   ;; the `use-package' macro, you'll need to explicitly add:
   ;; (eval-when-compile (require 'use-package))
   ;; at the top of your init file.
-  (push "/init.el" compile-angel-excluded-files)
-  (push "/early-init.el" compile-angel-excluded-files)
-  (push "/pre-init.el" compile-angel-excluded-files)
-  (push "/post-init.el" compile-angel-excluded-files)
-  (push "/pre-early-init.el" compile-angel-excluded-files)
-  (push "/post-early-init.el" compile-angel-excluded-files)
-  (push "/var/history" compile-angel-excluded-files)            ;; savehist
-  (push "/var/persist-text-scale" compile-angel-excluded-files) ;; persist-text-scaling
-  (push "/var/recentf" compile-angel-excluded-files)            ;; recentf
-  (push "/var/saveplace" compile-angel-excluded-files)          ;; saveplace
-  (push "/my-packages/bakin-init-my-packages.el" compile-angel-excluded-files) ;; always causes a native compile hang!!
+
+  (let ((no-native-compile-files '("/init.el"
+                                   "/early-init.el"
+                                   "/pre-init.el"
+                                   "/post-init.el"
+                                   "/pre-early-init.el"
+                                   "/post-early-init.el"
+                                   "/var/history"            ;; savehist
+                                   "/var/persist-text-scale" ;; persist-text-scaling
+                                   "/var/recentf"            ;; recentf
+                                   "/var/saveplace"          ;; saveplace
+                                   "/my-packages/bakin-init-my-packages.el")))  ;; this one always causes a native compile hang!
+    (dolist (file no-native-compile-files)
+      (push file compile-angel-excluded-files)))
 
   ;; A local mode that compiles .el files whenever the user saves them.
   ;; (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode)
@@ -60,8 +63,9 @@
 
   ;; Ensure that quitting only occurs once Emacs finishes native compiling,
   ;; preventing incomplete or leftover compilation files in `/tmp`.
-  (setq native-comp-async-query-on-exit t)
-  (setq confirm-kill-processes t)
+  (setq native-comp-async-query-on-exit t
+        confirm-kill-processes t
+        confirm-kill-emacs 'y-or-n-p)
 
   ;; Enable compilation of packages during installation - compile-angel will
   ;; handle it.

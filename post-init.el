@@ -22,8 +22,7 @@
 
 (require 'bakin-init-my-packages)
 
-
-;; ---------------------------------------------------------------------------
+
 
 ;;; package server use emacs as a server for emacsclient
 
@@ -37,6 +36,7 @@
 ;; the terminal process.
 ;;   emacsclient -n filename.txt
 ;;
+
 (use-package server
   :ensure nil
   :if (not (daemonp))
@@ -54,18 +54,9 @@
 
 ;;; Other customizations
 
-;; Typed text replaces selection (like in most editors)
-(delete-selection-mode 1)
 
 ;; Set max level of syntax highlighting for tree-sitter modes
 (setq treesit-font-lock-level 4)
-
-;; Turn on which-key-mode
-(which-key-mode)
-(which-key-setup-side-window-right) ;; can also be -bottom or -right-bottom
-
-;; paren match highlighting
-(add-hook 'after-init-hook #'show-paren-mode)
 
 ;; ensure unique buffer names
 (use-package uniquify
@@ -74,12 +65,6 @@
   (uniquify-buffer-name 'forward)
   (uniquify-separator "•")
   (uniquify-after-kill-buffer-p t))
-
-
-
-;; confirm before exiting - confirm if native comp running is done in bakin-compile-angel.el
-;;(setq confirm-kill-emacs 'y-or-n-p)
-;;(setq confirm-kill-processes t)
 
 ;; automatically apply verified safe file-local variables
 (setq enable-local-variables :safe)
@@ -96,6 +81,8 @@
 ;; printer-name
 ;; resize-mini-windows            ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Single-Shell.html
 ;; max-mini-window-height
+;; -- and --
+;; eldoc-mode
 
 ;; Local Variables:
 ;; indent-tabs-mode: nil

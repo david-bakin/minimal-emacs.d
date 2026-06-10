@@ -164,19 +164,12 @@
 
 ;;; Other customizations
 
-;; Set fringes to match pixel width of a character
-(fringe-mode (frame-char-width))
+
 
 ;; Typed text replaces selection (like in most editors)
 (delete-selection-mode 1)
 
-;; Display line/col numbers in mode line
-(setq line-number-mode t)
-(setq column-number-mode t)
-(setq mode-line-position-column-line-format '("%l:%C"))
-(setq-default display-line-numbers-type t)
-(dolist (hook '(prog-mode-hook conf-mode-hook))
-  (add-hook hook #'display-line-numbers-mode))
+
 
 ;; Set max level of syntax highlighting for tree-sitter modes
 (setq treesit-font-lock-level 4)
@@ -196,9 +189,6 @@
   (uniquify-separator "•")
   (uniquify-after-kill-buffer-p t))
 
-;; add movable windows dividers
-(add-hook 'after-init-hook #'window-divider-mode)
-
 ;; dired: constrain vertical cursor movement to lines within the buffer
 (setq dired-movement-style 'bounded-files)
 
@@ -211,18 +201,9 @@
 (with-eval-after-load 'dired
   (setq dired-listing-switches "--group-directories-first -ahlv"))
 
-;; enable visual indication of minibuffer recursion depth
-(add-hook 'after-init-hook #'minibuffer-depth-indicate-mode)
-
 ;; confirm before exiting
 ;;(setq confirm-kill-emacs 'y-or-n-p)
 ;;(setq confirm-kill-processes t)
-
-;; fixups for tooltip mode (so there's a delay)
-(setq tooltip-hide-delay 20)    ;; seconds, before it disappears
-(setq tooltip-delay 0.4)        ;; delay after mouse move
-(setq tooltip-short-delay 0.08) ;; delay before a short tooltip
-(tooltip-mode 1)
 
 ;; automatically apply verified safe file-local variables
 (setq enable-local-variables :safe)

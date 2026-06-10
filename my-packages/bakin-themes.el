@@ -1,4 +1,4 @@
-;;; bakin-themes.el --- Set up themes (color schemes) and default font -*- lexical-binding: t; -*-
+;;; bakin-themes.el --- Set up themes (color schemes) and default font and some other random visual stuff -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 David Bakin
 
@@ -15,6 +15,13 @@
 ;; Also choose PragmataPro Mono as default font.
 ;;
 ;; See https://github.com/jamescherti/vim-tab-bar.el for package vim-tab-bar.
+;;
+;; Also:
+;; - Set width of "fringes"
+;; - line/col#s in mode line
+;; - mouse-moveable window dividers
+;; - visible indication of minibuffer recursion depth
+;; - tooltip delays
 ;;
 ;; (It would be sweet to support ligatures - https://github.com/mickeynp/ligature.el - but
 ;; the standard version of Gnu Emacs is apparently not built with Cairo on Windows.)  (BUT
@@ -44,6 +51,33 @@
 ;; (bakin) turn on tab-bar mode
 (tab-bar-mode)
 (setopt tab-bar-show 1)  ;; only show tab bar when multiple tabs are open
+
+;; Set fringes to match pixel width of a character
+(fringe-mode (frame-char-width))
+
+;; Display line/col numbers in mode line
+(setq line-number-mode t)
+(setq column-number-mode t)
+(setq mode-line-position-column-line-format '("%l:%C"))
+(setq-default display-line-numbers-type t)
+(dolist (hook '(prog-mode-hook conf-mode-hook))
+  (add-hook hook #'display-line-numbers-mode))
+
+;; add movable windows dividers
+(add-hook 'after-init-hook #'window-divider-mode)
+
+;; enable visual indication of minibuffer recursion depth
+(add-hook 'after-init-hook #'minibuffer-depth-indicate-mode)
+;; **TODO:** use variable `recursion-depth` to indicate general editor recursion
+;; in mode line
+
+;; fixups for tooltip mode (so there's a delay)
+(setq tooltip-hide-delay 20)    ;; seconds, before it disappears
+(setq tooltip-delay 0.4)        ;; delay after mouse move
+(setq tooltip-short-delay 0.08) ;; delay before a short tooltip
+(setq tooltip-x-offset 5)
+(setq tooltip-y-offset 25)
+(tooltip-mode 1)
 
 
 (provide 'bakin-themes)

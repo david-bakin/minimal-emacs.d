@@ -75,17 +75,7 @@
   (uniquify-separator "•")
   (uniquify-after-kill-buffer-p t))
 
-;; dired: constrain vertical cursor movement to lines within the buffer
-(setq dired-movement-style 'bounded-files)
 
-;; dired: omit some files (but toggle viewing them with `C-x M-o`)
-(setq dired-omit-files (concat "\`[.]\'"
-                               "\|^\.DS_Store\'"))
-(add-hook 'dired-mode-hook #'dired-omit-mode)
-
-;; dired: group directories first
-(with-eval-after-load 'dired
-  (setq dired-listing-switches "--group-directories-first -ahlv"))
 
 ;; confirm before exiting - confirm if native comp running is done in bakin-compile-angel.el
 ;;(setq confirm-kill-emacs 'y-or-n-p)
@@ -93,6 +83,19 @@
 
 ;; automatically apply verified safe file-local variables
 (setq enable-local-variables :safe)
+
+
+
+;; other vars to consider:
+;; dired-compress-files-alist
+;; grep-find-ignored-files
+;; grep-find-ignored-directories
+;; lpr-command                    ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Printing.html
+;; lpr-header-switches            ;;   see also Printing Package https://www.gnu.org/software/emacs/manual/html_node/emacs/Printing-Package.html
+;; lpr-switches                   ;;   see also https://www.gnu.org/software/emacs/manual/html_node/emacs/PostScript-Variables.html
+;; printer-name
+;; resize-mini-windows            ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Single-Shell.html
+;; max-mini-window-height
 
 ;; Local Variables:
 ;; indent-tabs-mode: nil

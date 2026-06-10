@@ -19,6 +19,7 @@
 (require 'bakin-auto-package-update)
 (require 'bakin-autorevert)
 ;;(require 'bakin-buffer-terminator)
+(require 'bakin-dired)
 (require 'bakin-dumb-jump)
 (require 'bakin-easysession)
 ;;(require 'bakin-folding)

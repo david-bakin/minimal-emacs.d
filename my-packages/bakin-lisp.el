@@ -26,8 +26,13 @@
 ;; in source code (I didn't know anyone else but me did that ...)
 ;;   see https://github.com/purcell/page-break-lines
 ;; Plus remember emacs has jumping around between page breaks with "C-x [" (backward-page) and "C-x ]" (forward-page).
+;; And see also https://depp.brause.cc/form-feed/
 
-;;; Better elisp development "experience" - with packages paredit, page-break-lines, elisp-refs
+;; package elisp-refs - semantic code search for emacs lisp
+;;   see https://github.com/Wilfred/elisp-refs
+;;   but how does this relate to package Dump Jump?
+
+;;; Code:
 
 ;; Enables automatic indentation of code while typing
 (use-package aggressive-indent
@@ -64,11 +69,6 @@
              elisp-refs-variable
              elisp-refs-special
              elisp-refs-symbol))
-
-;;; Code:
-
-
-
 
 
 (provide 'bakin-lisp)

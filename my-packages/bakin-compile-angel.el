@@ -44,6 +44,11 @@
   (push "/post-init.el" compile-angel-excluded-files)
   (push "/pre-early-init.el" compile-angel-excluded-files)
   (push "/post-early-init.el" compile-angel-excluded-files)
+  (push "/var/history" compile-angel-excluded-files)            ;; savehist
+  (push "/var/persist-text-scale" compile-angel-excluded-files) ;; persist-text-scaling
+  (push "/var/recentf" compile-angel-excluded-files)            ;; recentf
+  (push "/var/saveplace" compile-angel-excluded-files)          ;; saveplace
+  (push "/my-packages/bakin-init-my-packages.el" compile-angel-excluded-files) ;; always causes a native compile hang!!
 
   ;; A local mode that compiles .el files whenever the user saves them.
   ;; (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode)
@@ -51,8 +56,17 @@
   ;; A global mode that compiles .el files prior to loading them via `load' or
   ;; `require'. Additionally, it compiles all packages that were loaded before
   ;; the mode `compile-angel-on-load-mode' was activated.
-  (compile-angel-on-load-mode 1))
+  (compile-angel-on-load-mode 1)
 
+  ;; Ensure that quitting only occurs once Emacs finishes native compiling,
+  ;; preventing incomplete or leftover compilation files in `/tmp`.
+  (setq native-comp-async-query-on-exit t)
+  (setq confirm-kill-processes t)
+
+  ;; Enable compilation of packages during installation - compile-angel will
+  ;; handle it.
+  (setq package-native-compile t)
+  )
 
 
 (provide 'bakin-compile-angel)

@@ -70,6 +70,15 @@
              elisp-refs-special
              elisp-refs-symbol))
 
+;; Turn on eldoc-mode to get an echo area information display of the symbol at point
+(use-package emacs
+  :hook
+  (emacs-lisp-mode . eldoc-mode))
+
+;; I don't need *scratch* to be elisp (but see also https://codeberg.org/emacs-weirdware/scratch)
+(setq initial-major-mode 'text-mode
+      initial-scratch-message nil)
+
 
 (provide 'bakin-lisp)
 

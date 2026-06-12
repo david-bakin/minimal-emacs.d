@@ -32,7 +32,7 @@
 ;; terminal to open files in the active Emacs session. For example, running the
 ;; following command opens the file in the existing Emacs frame without blocking
 ;; the terminal process.
-;;   emacsclient -n --server-file="%USERPROFILE%\.minimal-emacs.d\var\server\minimal" filename.txt
+;;   emacsclient -n --server-file="%USERPROFILE%\.emacs.d\var\server\minimal" filename.txt
 ;;
 
 (setq bakin--server-name "minimal")
@@ -49,6 +49,7 @@
     (unless (server-running-p)
       (setq server-use-tcp t)
       (setq server-name bakin--server-name)
+      (message "Starting server as '%s'\n" server-name)
       (server-start))))
 
 

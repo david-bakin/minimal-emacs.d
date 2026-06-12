@@ -10,7 +10,8 @@
 ;; A file and project explorer for Emacs that displays a structured tree
 ;; layout, similar to file browsers in modern IDEs. It functions as a sidebar
 ;; in the left window, providing a persistent view of files, projects, and
-;; other elements.  See https://github.com/Alexander-Miller/treemacs.
+;; other elements.
+;;   (See https://github.com/Alexander-Miller/treemacs)
 ;; (But also see https://github.com/emacs-lsp/lsp-treemacs if I get around to LSP integration.)
 
 ;;; Code:

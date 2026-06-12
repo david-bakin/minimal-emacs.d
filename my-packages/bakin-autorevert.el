@@ -10,6 +10,7 @@
 ;; Auto-revert in Emacs is a feature that automatically updates the
 ;; contents of a buffer to reflect changes made to the underlying file
 ;; on disk.
+;;  (Built-in package)
 
 
 ;;; Code:
@@ -21,10 +22,10 @@
   (after-init . global-auto-revert-mode)
   :init
   ;; (setq auto-revert-verbose t)
-  (setq auto-revert-interval 3)
-  (setq auto-revert-remote-files nil)
-  (setq auto-revert-use-notify t)
-  (setq auto-revert-avoid-polling nil))
+  (setq auto-revert-interval 3
+        auto-revert-remote-files nil
+        auto-revert-use-notify t
+        auto-revert-avoid-polling nil))
 
 
 (provide 'bakin-autorevert)

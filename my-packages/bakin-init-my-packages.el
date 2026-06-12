@@ -7,8 +7,9 @@
 
 ;;; Commentary:
 
-;; Load all of my packages.
-;; TODO: Consider auto-loading everything in this directory (without having to list packages explicitly)
+;; Load all of my packages - do it explicitly so I can easily control which
+;; ones to _not_ use at any given time
+
 
 ;;; Code:
 

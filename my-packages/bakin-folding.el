@@ -16,7 +16,8 @@
 ;; outline-indent-minor-mode, org-mode, markdown-mode, gfm-mode, treesit-fold-mode,
 ;; hs-minor-mode.  "With Kirigami, folding key bindings only need to be configured
 ;; **once**.  After that, the same keys work consistently across all supported major
-;; and minor modes, ..."  See https://github.com/jamescherti/kirigami.el
+;; and minor modes, ..."
+;;   (See https://github.com/jamescherti/kirigami.el)
 ;;
 ;; The built-in outline-minor-mode provides structured code folding in modes
 ;; such as Emacs Lisp and Python, allowing users to collapse and expand sections
@@ -31,8 +32,9 @@
 ;; - Inserting a new line with the same indentation level as the current line
 ;; - Move backward/forward to the indentation level of the current line
 ;; - and other features.
+;;  (See https://github.com/jamescherti/outline-indent.el)
 ;;
-;; Package treesit-fold (see https://github.com/emacs-tree-sitter/treesit-fold):
+;; Package treesit-fold):
 ;; Intelligent code folding by using the structural understanding of the
 ;; built-in tree-sitter parser. Unlike traditional folding methods that rely on
 ;; regular expressions or indentation, treesit-fold uses the actual syntax tree
@@ -41,6 +43,7 @@
 ;; precise folding behavior that respects the grammar of the programming
 ;; language, ensuring that fold boundaries are always syntactically correct even
 ;; in complex or nested code structures.
+;;   (See https://github.com/emacs-tree-sitter/treesit-fold)
 
 ;;; Code:
 

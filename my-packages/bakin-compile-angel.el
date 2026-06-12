@@ -16,6 +16,8 @@
 ;;
 ;; Ensure adding the following compile-angel code at the very beginning
 ;; of your `~/.emacs.d/post-init.el` file, before all other packages.
+;;
+;;  (See https://github.com/jamescherti/compile-angel.el)
 
 ;;; Code:
 

@@ -2,13 +2,11 @@
 
 ;;; TODO
 
-;; 2) If c compiler and build tools are available consider package vterm
 ;; 5) there are various autosave mechanisms in here - do they conflict?
 ;; 6) consider elpaca package manager and/or straight.el
 ;; 7) figure out visual line mode and use it or not - see also visual-line-fringe-indicators
 ;;    (https://vlevit.org/en/blog/tech/visual-line-wrap) and whitespace-mode and auto-fill-mode
 ;; 9) bind `ibuffer` to a key to use it like bufed (^x^b in epsilon)
-
 
 
 ;;; package path manipulation - setup for my packages (so that they can be byte-compiled)

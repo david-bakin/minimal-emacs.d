@@ -16,11 +16,11 @@
 ;; savehist is an Emacs feature that preserves the minibuffer history between
 ;; sessions. It saves the history of inputs in the minibuffer, such as commands,
 ;; search strings, and other prompts, to a file. This allows users to retain
-;; their minibuffer history across Emacs restarts.
+;; their minibuffer history across Emacs restarts.  (Built-in package)
 ;;
 ;; save-place-mode enables Emacs to remember the last location within a file
 ;; upon reopening. This feature is particularly beneficial for resuming work at
-;; the precise point where you previously left off.
+;; the precise point where you previously left off. (Built-in package)
 ;;
 ;; Enable `auto-save-mode' to prevent data loss. Use `recover-file' or
 ;; `recover-session' to restore unsaved changes.
@@ -34,13 +34,14 @@
 ;; with a file, while auto-save-visited-mode only saves file-visiting buffers
 ;; after a period of idle time, directly saving to the file itself without
 ;; creating backup files.
-;; 
+;;
 ;; Package persist-text-scale to ensure text size in each buffer remains consistent
-;; even after restarting Emacs.  See https://github.com/jamescherti/persist-text-scale.el
+;; even after restarting Emacs.
+;;   (See https://github.com/jamescherti/persist-text-scale.el)
 ;;
 ;; Package buffer-guardian - "Automatically save Emacs buffers without manual
 ;; intervention (when buffers lose focus, regularly, or after emacs is idle)."
-;; See https://github.com/jamescherti/buffer-guardian.el
+;;   (See https://github.com/jamescherti/buffer-guardian.el)
 
 
 ;;; Code:
@@ -51,8 +52,8 @@
   :hook
   (after-init . savehist-mode)
   :init
-  (setq history-length 300)
-  (setq savehist-autosave-interval 300))
+  (setq history-length 300
+        savehist-autosave-interval 300))
 
 (use-package saveplace
   :ensure nil
@@ -63,10 +64,10 @@
   (setq save-place-limit 400))
 
 
-(setq auto-save-default t)
-(setq auto-save-interval 300)          ; Trigger an auto-save after 300 keystrokes
-(setq auto-save-timeout 60)            ; Trigger an auto-save 60 seconds of idle time
-(setq auto-save-visited-interval 10)   ; Save after 10 seconds of inactivity
+(setq auto-save-default t
+      auto-save-interval 300           ; Trigger an auto-save after 300 keystrokes
+      auto-save-timeout 60            ; Trigger an auto-save 60 seconds of idle time
+      auto-save-visited-interval 10)   ; Save after 10 seconds of inactivity
 (auto-save-visited-mode 1)
 
 (use-package persist-text-scale

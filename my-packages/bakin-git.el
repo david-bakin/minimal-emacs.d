@@ -19,10 +19,10 @@
              global-diff-hl-mode)
   :hook (prog-mode . diff-hl-mode)
   :init
-  (setq diff-hl-flydiff-delay 0.4)  ; Faster
-  (setq diff-hl-show-staged-changes nil)  ; Realtime feedback
-  (setq diff-hl-update-async t)           ; Do not block Emacs while updating these marginal things
-  (setq diff-hl-global-modes '(not pdf-view-mode image-mode)))
+  (setq diff-hl-flydiff-delay 0.4        ; Faster
+        diff-hl-show-staged-changes nil  ; Realtime feedback
+        diff-hl-update-async t           ; Do not block Emacs while updating these marginal things
+        diff-hl-global-modes '(not pdf-view-mode image-mode)))
 
 
 (provide 'bakin-git)

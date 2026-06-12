@@ -7,12 +7,13 @@
 
 ;;; Commentary:
 
-;; Package Dumb Jump - see https://github.com/jacktasia/dumb-jump
+;; Package Dumb Jump
 ;;
 ;; "Dumb Jump is an Emacs "jump to definition" and "find references" package with support
 ;; for 60+ programming languages that favors "just working". This means minimal -- and
 ;; ideally zero -- configuration with absolutely no stored indexes (TAGS) or persistent
 ;; background processes.
+;;   (See https://github.com/jacktasia/dumb-jump)
 
 ;;; Code:
 
@@ -41,8 +42,8 @@
   ;; significantly faster and more accurate than the default searchers (grep,
   ;; ag, etc.).
   (when (executable-find "rg")
-    (setq dumb-jump-force-searcher 'rg)
-    (setq dumb-jump-prefer-searcher 'rg)))
+    (setq dumb-jump-force-searcher 'rg
+          dumb-jump-prefer-searcher 'rg)))
 
 (provide 'bakin-dumb-jump)
 

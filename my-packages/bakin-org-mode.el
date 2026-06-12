@@ -37,7 +37,6 @@
   :hook (org-mode . org-appear-mode))
 
 
-
 (provide 'bakin-org-mode)
 
 ;; Local Variables:

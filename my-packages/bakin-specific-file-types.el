@@ -7,8 +7,10 @@
 
 ;;; Commentary:
 
-;; Support for git files (broken: signature problem loading package), yaml, dockerfile, jinga2,
+;; Support for git files (broken: signature problem loading package),
 ;; and CSV (broken: signature problem loading package)
+;;
+;; package git-modes (part of magit) (see https://github.com/magit/git-modes)
 
 
 ;;; Code:
@@ -25,46 +27,18 @@
 ;;          ("/info/exclude\\'" . gitignore-mode)
 ;;          ("/git/ignore\\'" . gitignore-mode)
 ;;          ("/.gitignore_global\\'" . gitignore-mode)  ; jc-dotfiles
-;; 
+;;
 ;;          ("/\\.gitconfig\\'" . gitconfig-mode)
 ;;          ("/\\.git/config\\'" . gitconfig-mode)
 ;;          ("/modules/.*/config\\'" . gitconfig-mode)
 ;;          ("/git/config\\'" . gitconfig-mode)
 ;;          ("/\\.gitmodules\\'" . gitconfig-mode)
 ;;          ("/etc/gitconfig\\'" . gitconfig-mode)
-;; 
+;;
 ;;          ("/\\.gitattributes\\'" . gitattributes-mode)
 ;;          ("/info/attributes\\'" . gitattributes-mode)
 ;;          ("/git/attributes\\'" . gitattributes-mode)))
 
-;; Support for YAML files.
-
-;; NOTE: Prefer the tree-sitter-based yaml-ts-mode over yaml-mode when
-;; available, as it provides more accurate syntax parsing and enhanced editing
-;; features.
-(use-package yaml-mode
-  :commands yaml-mode
-  :mode (("\\.yaml\\'" . yaml-mode)
-         ("\\.yml\\'" . yaml-mode)))
-
-;;; Support for Dockerfile files.
-
-;; NOTE: Prefer the tree-sitter-based dockerfile-ts-mode over dockerfile-mode
-;; when available, as it provides more accurate syntax parsing and enhanced
-;; editing features.
-(use-package dockerfile-mode
-  :commands dockerfile-mode
-  :mode ("Dockerfile\\'" . dockerfile-mode))
-
-;;; Support for Jinja2 files
-
-;; Jinja2 template support for files commonly used in configuration management
-;; systems and web frameworks. This mode enables syntax highlighting and basic
-;; editing facilities for templates written using the Jinja2 templating
-;; language.
-(use-package jinja2-mode
-  :commands jinja2-mode
-  :mode ("\\.j2\\'" . jinja2-mode))
 
 ;;; Support for CSV files
 

@@ -7,8 +7,10 @@
 
 ;;; Commentary:
 
-;;; package markdown-mode and markdown-toc - for editing markdown 
+;;; package markdown-mode and markdown-toc - for editing markdown
 ;;  **N.B.: need to test integration of pandoc and mdlook**
+;;    (see https://github.com/jrblevin/markdown-mode
+;;     and https://github.com/ardumont/markdown-toc)
 
 ;; The markdown-mode package provides a major mode for Emacs for syntax
 ;; highlighting, editing commands, and preview support for Markdown documents.
@@ -24,9 +26,10 @@
              markdown-mode
              markdown-view-mode)
   :init
-  (setq markdown-command '("C:\\Scoop\\Local\\apps\\pandoc\\current\\pandoc" "--from=markdown" "--to=html5"))    ;; (bakin)
-  (setq markdown-open-command '("C:\\Users\\david\\AppData\\Local\\Programs\\MDLook\\MDLook.exe"))               ;; (bakin)
-  (setq markdown-enable-math t)                                                                                  ;; (bakin)
+  (setq markdown-command '("C:\\Scoop\\Local\\apps\\pandoc\\current\\pandoc" "--from=markdown" "--to=html5")  ;; (bakin)
+        markdown-open-command '("C:\\Users\\david\\AppData\\Local\\Programs\\MDLook\\MDLook.exe")             ;; (bakin)
+        markdown-enable-math t)                                                                              
+ ;; (bakin)
 
   :mode (("\\.markdown\\'" . markdown-mode)
          ("\\.md\\'" . gfm-mode)

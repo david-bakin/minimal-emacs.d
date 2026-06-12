@@ -9,7 +9,7 @@
 
 ;; Package helpful is an alternative to the built-in Emacs help that provides
 ;; much more contextual information.
-;;   See https://github.com/Wilfred/helpful
+;;   (See https://github.com/Wilfred/helpful)
 
 
 ;;; Code:

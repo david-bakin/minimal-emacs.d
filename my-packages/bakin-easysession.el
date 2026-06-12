@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; easysession.el - see https://github.com/jamescherti/easysession.el
+;; easysession.el
 ;;
 ;; The easysession Emacs package is a session manager for Emacs that can persist
 ;; and restore file editing buffers, indirect buffers/clones, Dired buffers,
@@ -15,6 +15,7 @@
 ;; windows), and Emacs frames. It offers a convenient and effortless way to
 ;; manage Emacs editing sessions and utilizes built-in Emacs functions to
 ;; persist and restore frames.
+;;   (see https://github.com/jamescherti/easysession.el)
 
 ;;; Code:
 

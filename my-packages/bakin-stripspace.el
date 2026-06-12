@@ -10,6 +10,7 @@
 ;; The stripspace Emacs package provides stripspace-local-mode, a minor mode
 ;; that automatically removes trailing whitespace and blank lines at the end of
 ;; the buffer when saving.
+;;   (See https://github.com/jamescherti/stripspace.el)
 
 
 ;;; Code:

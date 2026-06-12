@@ -9,6 +9,7 @@
 
 ;; Package auto-package-update will automate updating installed packages. Interval
 ;; is configurable, but is weekly below.
+;;   (See https://github.com/rranelli/auto-package-update.el)
 
 ;;; Code:
 

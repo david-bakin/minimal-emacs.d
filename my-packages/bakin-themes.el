@@ -26,7 +26,7 @@
 ;; (It would be sweet to support ligatures - https://github.com/mickeynp/ligature.el - but
 ;; the standard version of Gnu Emacs is apparently not built with Cairo on Windows.)  (BUT
 ;; wait a second!  The installation directory contains `libcairo-2.dll` ... so why does
-;; `C-h v cairo-version-string` not work?) (Anyway, should at least test ligatures 
+;; `C-h v cairo-version-string` not work?) (Anyway, should at least test ligatures
 ;; package ...)
 
 ;;; Code:
@@ -56,9 +56,9 @@
 (fringe-mode (frame-char-width))
 
 ;; Display line/col numbers in mode line
-(setq line-number-mode t)
-(setq column-number-mode t)
-(setq mode-line-position-column-line-format '("%l:%C"))
+(setq line-number-mode t
+      column-number-mode t
+      mode-line-position-column-line-format '("%l:%C"))
 (setq-default display-line-numbers-type t)
 (dolist (hook '(prog-mode-hook conf-mode-hook))
   (add-hook hook #'display-line-numbers-mode))
@@ -72,11 +72,11 @@
 ;; in mode line
 
 ;; fixups for tooltip mode (so there's a delay)
-(setq tooltip-hide-delay 20)    ;; seconds, before it disappears
-(setq tooltip-delay 0.4)        ;; delay after mouse move
-(setq tooltip-short-delay 0.08) ;; delay before a short tooltip
-(setq tooltip-x-offset 5)
-(setq tooltip-y-offset 25)
+(setq tooltip-hide-delay 20    ;; seconds, before it disappears
+      tooltip-delay 0.4        ;; delay after mouse move
+      tooltip-short-delay 0.08 ;; delay before a short tooltip
+      tooltip-x-offset 5
+      tooltip-y-offset 25)
 (tooltip-mode 1)
 
 

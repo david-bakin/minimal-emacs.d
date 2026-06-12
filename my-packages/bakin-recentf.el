@@ -9,7 +9,7 @@
 
 ;; Recentf is an Emacs package that maintains a list of recently
 ;; accessed files, making it easier to reopen files you have worked on
-;; recently.
+;; recently.  (Built-in package)
 
 
 ;;; Code:

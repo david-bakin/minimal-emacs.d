@@ -14,7 +14,7 @@
 (add-hook 'emacs-startup-hook #'display-startup-time 100)
 
 ;; establish some optional UI features
-(setq minimal-emacs-ui-features '(context-menu menu-bar dialogs tooltips))
+(setq minimal-emacs-ui-features '(context-menu menu-bar tooltips))
 
 ;; Reducing clutter in ~/.emacs.d by redirecting files to ~/.emacs.d/var/
 ;; Still loads minimal emacs configs `{pre,post}{-early}init.el` from ~/.minimal-emacs.d

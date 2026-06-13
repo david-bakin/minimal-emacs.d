@@ -32,13 +32,15 @@
         which-key-idle-delay 5.0
         which-key-idle-secondary-delay 0.25
         which-key-use-C-h-commands t)
-)
+  (set-scroll-bar-mode 'right)
+  (horizontal-scroll-bar-mode t)
+  )
 
 
 (provide 'bakin-ordinary-file-editing)
 
 
-;; Local Variables:
+;; Local variables:
 ;; indent-tabs-mode: nil
 ;; coding: utf-8
 ;; End:

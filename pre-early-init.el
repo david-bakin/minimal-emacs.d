@@ -41,8 +41,8 @@
       native-comp-speed 2
       native-comp-verbose 0
       native-comp-compiler-options `(
-  "-O2" "-g0"
-  ,(format "-mtune=%s" my-cpu-architecture)
-  ,(format "-march=%s" my-cpu-architecture)
-  "-fno-omit-frame-pointer"
-  "-fno-finite-math-only"))
+                                     "-O2" "-g0"
+                                     ,(format "-mtune=%s" my-cpu-architecture)
+                                     ,(format "-march=%s" my-cpu-architecture)
+                                     "-fno-omit-frame-pointer"
+                                     "-fno-finite-math-only"))

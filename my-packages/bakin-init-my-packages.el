@@ -34,14 +34,14 @@
 (require 'bakin-register-w32-hot-key)
 (require 'bakin-save-stuff)
 ;;(require 'bakin-specific-file-types)
-(require 'bakin-stripspace)
 (require 'bakin-themes)
 (require 'bakin-treemacs)
+(require 'bakin-whitespace)
 
 
 ;; Just for the record, emit a message with all my loaded packages
 (let* ((my-packages (sort (seq-filter #'(lambda (elt) (string-prefix-p "bakin-" (symbol-name elt))) features)))
-      (wrapped (string-fill (string-trim (prin1-to-string my-packages) "[(]" "[)]") 100)))
+       (wrapped (string-fill (string-trim (prin1-to-string my-packages) "[(]" "[)]") 100)))
   (message "⤋ ⤋ ⤋ ⤋ --- My packages loaded:\n%s\n⤊ ⤊ ⤊ ⤊" wrapped))
 
 

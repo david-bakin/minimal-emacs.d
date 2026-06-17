@@ -58,8 +58,15 @@
 ;; Display line/col numbers in mode line
 (setq line-number-mode t
       column-number-mode t
-      mode-line-position-column-line-format '("%l:%C"))
-(setq-default display-line-numbers-type t)
+      mode-line-position-column-line-format '("%l:%c"))
+
+;; And display line numbers in buffer for prog-mode buffers
+(setopt display-line-numbers-grow-only t    ;; only let them get wider
+        display-line-numbers-type t         ;; absolute line numbers
+        display-line-numbers-width-start t) ;; initially size line numbers to buffer's needs
+(setq-default display-line-numbers-widen t  ;; line numbers even when buffer's narrowed
+              display-line-numbers-width 4) ;; initially start with 4 columns, even if not needed
+
 (dolist (hook '(prog-mode-hook conf-mode-hook))
   (add-hook hook #'display-line-numbers-mode))
 

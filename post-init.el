@@ -1,6 +1,8 @@
 ;;; post-init.el --- customizations to run after Emacs + minimal Emacs init.el processing -*- no-byte-compile: t; lexical-binding: t; -*-
 
 ;;; TODO
+;; backups don't seem to work
+;; auto-save may not be saving correctly - e.g. save files name/location and also timeout 15s
 
 ;; --
 
@@ -57,13 +59,73 @@
 (use-package uniquify
   :ensure nil
   :custom
-  (uniquify-buffer-name 'forward)
-  (uniquify-separator "•")
   (uniquify-after-kill-buffer-p t)
+  (uniquify-buffer-name-style 'post-forward-angle-brackets)
+  (uniquify-separator "•")
+  (uniquify-strip-common-suffix t)
   (setq uniquify-ignore-buffers-re "^\\*")) ; don't muck with special buffers)
 
 ;; automatically apply verified safe file-local variables
-(setq enable-local-variables :safe)
+(setopt enable-local-variables :safe)
+
+;; clipboard things
+(setopt save-interprogram-paste-before-kill t
+        kill-do-not-save-duplicates t)
+
+;; proportional window resizing (good idea, or not?)
+(setopt window-combination-resize t)
+
+;; reversible `delete-other-windows` (see https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/)
+;; (**N.B.:** See documentation on how it interacts - possibly badly! - with the tab bar,
+;; and consider making this work with `tab-bar-history-mode`)
+1(winner-mode 1)
+(defun bakin-toggle-delete-other-windows ()
+  "Delete other windows in frame if any, or restore previous window config"
+  (interactive)
+  (if (and winner-mode
+           (equal (selected-window) (next-window)))
+      (winner-undo)
+    (delete-other-windows)))
+(global-set-key (kbd "C-x 1") #'bakin-toggle-delete-other-windows)
+
+;; Get "(n/m)" in search prompt - you're at nth occurance of m matches
+(setopt isearch-lazy-count t
+        isearch-count-prefix-format "[%s of %s]")
+
+;; control window splitting
+(setq split-width-threshold 110   ;; split at 110 characters minimum
+      split-height-threshold nil) ;; really avoid spliting top/bottom
+
+;; comint-mode
+(use-package comint
+  :ensure nil
+  :custom
+  comint-buffer-maximum-size (* 6 1024)
+  comint-eol-on-send t
+  comint-input-ignoredups t
+  comint-move-point-for-matching-input 'end-of-line
+  comint-move-point-for-output t
+  comint-scroll-show-maximum-output t
+  comint-scroll-to-bottom-on-input t)
+
+;; compile mode
+(use-package compile
+  :ensure nil
+  :custom
+  compilation-auto-jump-to-first-error 'if-location-known
+  compilation-context-lines nil
+  compilation-first-column 1
+  compilation-window-height nil)
+
+;; enable backup-files mode - all related vars are already set appropriately
+(setq-default make-backup-files t)
+
+;;;; fix syntax in re-builder (regexp builder - need to look into this!)
+;;(use-package 're-builder
+;;  :custom
+;;  (reb-re-syntax 'string))
+
+;; **TODO:** Look for more at https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/
 
 
 ;; other vars to consider:
@@ -76,7 +138,8 @@
 ;; printer-name
 ;; resize-mini-windows            ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Single-Shell.html
 ;; max-mini-window-height
-
+;; minibuffer-regexp-mode
+;; re-builder package
 
 
 ;; Local Variables:

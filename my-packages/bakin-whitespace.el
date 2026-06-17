@@ -86,6 +86,10 @@
 (set-face-attribute 'region nil :background "deep sky blue" :foreground "white")
 
 
+;; don't draw cursors in non-selected windows, or highlight selections either
+(setopt cursor-in-non-selected-windows nil
+        highlight-nonselected-windows nil)
+
 (provide 'bakin-whitespace)
 
 ;; Local Variables:

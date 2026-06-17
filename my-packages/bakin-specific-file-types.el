@@ -15,6 +15,10 @@
 
 ;;; Code:
 
+;; configure (built-in) which-function-mode
+(setq which-func-update-delay 0.5) ;; override init.el to shorten delay
+
+
 ;; Git file support
 
 ;; 2026-06-09 - broken - Can't load due to some kind of PGP signature error

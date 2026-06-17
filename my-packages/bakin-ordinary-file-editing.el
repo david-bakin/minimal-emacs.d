@@ -18,6 +18,7 @@
   :custom
   (show-paren-mode 1)                        ; highlight parens ...
   (show-paren-style 'mixed)                  ; ... just the parens, unless the matching paren is not visible
+  (setq show-paren-context-when-offscreen 'overlay) ; show the open paren context
   (setq-default indent-tabs-mode nil)        ; NO HARD TABS! (this doesn't strictly enforce that though it's generally sufficient)
   (setq require-final-newline t)             ; force files to end with newline (when saved)
   (delete-selection-mode 1)                  ; typed text replaces selection (like most editors)
